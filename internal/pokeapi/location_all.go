@@ -7,40 +7,56 @@ import (
 	"net/http"
 )
 
-type LocationName struct {
-	Count    int    `json:"count"`
-	Next     string `json:"next"`
-	Previous string `json:"previous"`
-	Results  []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"results"`
-}
-
-func GetLocation(pageURL string) (LocationName, error) {
+func (c *Client) ListLocation(pageURL string) (LocationName, error) {
 	url := baseURL + "/location-area"
 
 	if pageURL != "" {
 		url = pageURL
 	}
-	var resource LocationName
-	resp, err := http.Get(url)
-	if err != nil {
-		return resource, fmt.Errorf("error in fetching pokemon location: %w", err)
+
+	var locationListResp LocationName
+
+	// Check if cache has stored the URL
+	val, exist := c.Cache.Get(url)
+	// If exist
+	if exist {
+		fmt.Println("Cache hit")
+		err := json.Unmarshal(val, &locationListResp)
+		if err != nil {
+
+			return LocationName{}, err
+		}
+		return locationListResp, nil
 	}
 
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
+	//If not exist
+	fmt.Println("Cache missed")
+
+	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		return resource, fmt.Errorf("error in reading body:%w", err)
+		return LocationName{}, err
+	}
+
+	res, err := c.httpClient.Do(req)
+	if err != nil {
+		return LocationName{}, err
+	}
+
+	defer res.Body.Close()
+
+	resBody, err := io.ReadAll(res.Body)
+	if err != nil {
+		return LocationName{}, err
 	}
 
 	// Unmarshal Json to struct
-	err = json.Unmarshal([]byte(body), &resource)
+	err = json.Unmarshal([]byte(resBody), &locationListResp)
 	if err != nil {
-		return resource, fmt.Errorf("error in unmarshall locations from json format")
+		return LocationName{}, err
 
 	}
 
-	return resource, nil
+	c.Cache.Add(url, resBody)
+
+	return locationListResp, nil
 }
