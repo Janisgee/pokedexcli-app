@@ -2,24 +2,12 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/janisgee/pokedexcli-app/internal/pokeapi"
 )
 
-type ResourceLocationName struct {
-	Count    int    `json:"count"`
-	Next     string `json:"next"`
-	Previous string `json:"previous"`
-	Results  []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"results"`
-}
-
-func commandMap(cfg *config) error {
-	locationRep, err := pokeapi.GetLocation(cfg.NextURL)
+func commandMap(cfg *Config, args ...string) error {
+	locationRep, err := cfg.PokeApiClient.ListLocation(cfg.NextURL)
 	if err != nil {
-		return fmt.Errorf("error getting location name list.")
+		return fmt.Errorf("error getting location name list from fetching pokeapi")
 	}
 
 	// set config pagination of next
@@ -33,10 +21,10 @@ func commandMap(cfg *config) error {
 	return nil
 }
 
-func commandMapb(cfg *config) error {
-	locationRep, err := pokeapi.GetLocation(cfg.PreviousURL)
+func commandMapb(cfg *Config, args ...string) error {
+	locationRep, err := cfg.PokeApiClient.ListLocation(cfg.PreviousURL)
 	if err != nil {
-		return fmt.Errorf("error getting location name list.")
+		return fmt.Errorf("error getting location name list")
 	}
 
 	// set config pagination of next
