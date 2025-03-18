@@ -51,22 +51,23 @@ There are eight commands to use in Pokedex:
       ![command-explore](https://github.com/user-attachments/assets/68f16c48-e518-462a-b44b-5fac11e53e26)
 
 5) Catch [Pokemon Name]
-       - It helps user to catch pokemon, user can inspect pokemon details after caught them successfully.
+      - It helps user to catch pokemon, user can inspect pokemon details after caught them successfully.
 
       ![command-catch](https://github.com/user-attachments/assets/0ca70ccc-5148-4991-bf5a-52f6f1172511)
 
 6) Inspect [Pokemon Name]
-       - It shows the name, stats and type of a pokemon.
+      - It shows the name, stats and type of a pokemon.
 
       ![command-inspect](https://github.com/user-attachments/assets/09f63377-0450-44fe-b38c-d014ab5cd663)
 
 7) Pokedex
-       - It shows all the pokemon name that user have caught.
+      
+      - It shows all the pokemon name that user have caught.
 
       ![command-pokedex](https://github.com/user-attachments/assets/16d3de4e-386f-409b-ab02-2d6cd907e452)
 
 8) Exit
-       - It exit the CLI tool (Pokedex device)
+      - It exits the CLI tool (Pokedex device)
 
       ![command-exit](https://github.com/user-attachments/assets/6f672a8a-1073-40bb-bf56-ac00022dd82a)
 
