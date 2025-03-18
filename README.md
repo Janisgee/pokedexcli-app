@@ -3,7 +3,30 @@
 ![Pokedex_logo](https://github.com/user-attachments/assets/59a9afb0-eaa9-4a5d-9c8c-308f7a982d98)
 
 Pokedex is a device tool that let us to look up information about Pokemon, eg. pokemon name, type and stats. 
-It is built in a command-line REPL. We use the PokeAPI to fetch all the data we will need using GET request.
+It is built in a command-line REPL. We use the [Poke API]([https://go.dev/doc/install](https://pokeapi.co/docs/v2#info)) to fetch all the data we will need using GET request.
+
+# Local Development
+1) This is a simple Golang project, you will need to install the latest [Go toolchain](https://go.dev/doc/install).
+
+2) Create a main.go file at the root of project.
+
+3) Create a Go module int the root of project.
+
+4) Build your project: (Alternative way to run and build your project, you can run (6) instead, ignore (4) and (5) steps.)
+   ```
+   go build
+   ```
+
+5) Run your program:
+   ```
+   ./pokedexcli
+   ```
+
+6) Build and run your program:
+   ```
+   ./scripts/build_run.sh
+   ```
+
 
 # Commands
 There are eight commands to use in Pokedex:
