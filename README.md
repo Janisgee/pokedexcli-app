@@ -27,6 +27,11 @@ It is built in a command-line REPL. We use the [Poke API](https://pokeapi.co/doc
    ./scripts/build_run.sh
    ```
 
+7) Run the tests
+   ```
+   go test ./...
+   ```
+
 
 # Commands
 There are eight commands to use in Pokedex:
