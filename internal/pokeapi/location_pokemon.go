@@ -8,6 +8,7 @@ import (
 )
 
 func (c *Client) GetLocationPokemon(locationName string) (LocationDetails, error) {
+
 	url := baseURL + "/location-area" + "/" + locationName
 
 	var locationDetailResp LocationDetails
