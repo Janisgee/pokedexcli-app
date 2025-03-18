@@ -57,6 +57,12 @@ func startPokedex(cfg *Config) {
 
 func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
+		"pokedex": {
+			name:        "pokedex",
+			description: "Track all the Pokemon user have caught",
+			callback:    commandPokedex,
+		},
+
 		"explore": {
 			name:        "explore",
 			description: "Displays a list of Pokemon located in the input location",

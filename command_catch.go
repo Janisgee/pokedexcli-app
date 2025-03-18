@@ -24,6 +24,7 @@ func commandCatch(cfg *Config, args ...string) error {
 	random_num := rand.Intn(101)
 	if random_num < catch_chance {
 		fmt.Printf("%v was caught!\n", pokemonName)
+		fmt.Println("You may now inspect it with the inspect command.")
 		// Add Pokemon into user's Pokedex
 		cfg.caughtPokemon[pokemonName] = pokemonDetails
 	} else {
