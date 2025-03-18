@@ -57,30 +57,46 @@ func startPokedex(cfg *Config) {
 
 func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
-		"help": {
-			name:        "help",
-			description: "Displays a help message",
-			callback:    commandHelp,
+		"pokedex": {
+			name:        "pokedex",
+			description: "Track all the Pokemon user have caught",
+			callback:    commandPokedex,
 		},
-		"map": {
-			name:        "map",
-			description: "Displays the next 20 location areas in the Pokemon world",
-			callback:    commandMap,
-		}, "mapb": {
-			name:        "mapb",
-			description: "Displays the previous 20 location areas in the Pokemon world",
-			callback:    commandMapb,
-		},
+
 		"explore": {
 			name:        "explore",
 			description: "Displays a list of Pokemon located in the input location",
 			callback:    commandExplore,
 		},
+
 		"catch": {
 			name:        "catch",
 			description: "Catch a pokemon",
 			callback:    commandCatch,
 		},
+
+		"inspect": {
+			name:        "inspect",
+			description: "inspect a pokemon",
+			callback:    commandInspect,
+		},
+		"map": {
+			name:        "map",
+			description: "Displays the next 20 location areas in the Pokemon world",
+			callback:    commandMap,
+		},
+		"mapb": {
+			name:        "mapb",
+			description: "Displays the previous 20 location areas in the Pokemon world",
+			callback:    commandMapb,
+		},
+
+		"help": {
+			name:        "help",
+			description: "Displays a help message",
+			callback:    commandHelp,
+		},
+
 		"exit": {
 			name:        "exit",
 			description: "Exit the Pokedex",
